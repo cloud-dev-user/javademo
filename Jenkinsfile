@@ -4,7 +4,7 @@ pipeline{
     stages {
         stage("Checkout from branch"){
             steps{
-                
+                git branch: '$branch_name', url: 'https://github.com/PrashantDJoshi/javademo.git'
             }
         }
         stage("Checkout"){
