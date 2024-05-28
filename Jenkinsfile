@@ -3,6 +3,15 @@ pipeline{
           label 'agnet123'
         }
 
+       parameters { string defaultValue: 'master', name:'branch_name'}
+       stages {
+              stage("Checkout code") {
+              steps { 
+                     git branch: "$branch_name", url:'https://github.com/sukamb/javademo.git'
+                 }
+              }
+       }
+
         stages {
             stage("checkout the code"){
                 steps{
