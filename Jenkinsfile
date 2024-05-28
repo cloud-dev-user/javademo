@@ -2,10 +2,11 @@ pipeline {
     agent {
         label 'shrey-agent-1'
     }
-    stages{
+    parameters { string defaultValue: 'master', name: 'branch_name' }
+    stages {
         stage("checkout the code") {
             steps {
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/cloud-dev-user/java-war-project.git/']])
+                git branch: "$branch_name", url: 'https://github.com/Shreyashi-Samaddar/javademo.git'
             }
         }
         stage("build") {
