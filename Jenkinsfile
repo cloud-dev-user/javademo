@@ -1,21 +1,17 @@
-pipeline {
-         agent any 
-		 stages{ 
-		 
-		         stage("Build package"){
-			   steps{
-			       sh " mvn package" 
-				   }
-				}
-			   stage ("build notification"){
-			   steps{
-			        echo " this build is completed " 
-					}
-			    }	 
-		 }
-  post{
-    always{
-           cleanWs()
-    }
-  }
+pipeline{ 
+
+    agent any
+  stages {
+     stage('checkout') {
+        steps {
+             git 'https://github.com/cloud-dev-user/javademo.git'
+               }
+             }
+
+     stage('test') {
+        steps {
+           echo '"testing is in progress"'
+            }
+         }
+}
 }
